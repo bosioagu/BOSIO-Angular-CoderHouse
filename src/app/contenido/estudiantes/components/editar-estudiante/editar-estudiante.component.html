@@ -1,0 +1,57 @@
+<h3 appSubtitleFont >Editar estudiantes</h3>
+
+<form [formGroup]="formulario" (ngSubmit)="editarEstudiante()">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="apellido">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Celular</mat-label>
+                <input matInput formControlName="telefono">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>N° Documento</mat-label>
+                <input matInput formControlName="documento">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Lenguaje preferido</mat-label>
+                <input matInput formControlName="conocimiento">
+            </mat-form-field>
+        </div>
+
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input matInput [matDatepicker]="fechaInicio" formControlName="fechaNacimiento">
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matSuffix [for]="fechaInicio"></mat-datepicker-toggle>
+                <mat-datepicker #fechaInicio></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+
+
+        <div class="col-md-12">
+            <button type="submit" class="save-button fill btn btn-dark" [disabled]="!formulario.valid">Agregar Estudiante</button>
+        </div>
+    </div>
+</form>

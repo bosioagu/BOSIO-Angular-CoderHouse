@@ -1,0 +1,9 @@
+.espacio{
+    flex: 1 1 auto;
+}
+
+.content {
+    width: 1500px;
+    margin-left: 165px;
+    margin-top: 20px;
+}

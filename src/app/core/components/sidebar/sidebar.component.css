@@ -1,0 +1,9 @@
+.sidebar{
+    margin-top: 10px;
+    width: 200px !important;
+    height: 860px;
+}
+
+.nav-link:hover{
+    background: rgb(53, 148, 202);
+}

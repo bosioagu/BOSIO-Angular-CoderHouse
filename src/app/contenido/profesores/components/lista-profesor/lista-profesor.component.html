@@ -1,0 +1,31 @@
+<p appSubtitleFont >Profesores</p>
+
+<div class="row">
+
+
+<div *ngFor="let profesor of profesores$ | async" class="col-md-3">
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ profesor.nombre }}</mat-card-title>
+        <mat-card-subtitle>{{ profesor.apellido }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="profesor.imagen" alt="coderhouse">
+
+    <mat-card-content>
+        <p>Curso {{ profesor.curso }}</p>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        <button mat-icon-button color="primary" (click)="editarProfesor(profesor)">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="eliminarProfesor(profesor.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
+</div>
+</div>
+
+
