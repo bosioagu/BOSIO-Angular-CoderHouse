@@ -6,10 +6,13 @@
             <p>ESTUDIANTES</p>
             <div class="espacio"></div>
             <a mat-button type="button" class="btn btn-primary" routerLink="listar">Listar Estudiantes</a>
+          <ng-container *ngIf="sesion$ | async as sesion">  
+            <div *ngIf="sesion.usuarioActivo?.admin">
                 <a mat-button type="button" class="btn btn-primary" routerLink="agregar">Agregar Estudiante</a>
-            </mat-toolbar>
+            </div>
+          </ng-container>       
+        </mat-toolbar>
         <div class="content-info">
           <router-outlet  ></router-outlet>
-          <h1>En esta seccion se veran noticias relacionadas</h1>
         </div>
       </div>

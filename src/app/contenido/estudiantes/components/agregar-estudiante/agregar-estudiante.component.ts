@@ -37,7 +37,7 @@ export class AgregarEstudianteComponent implements OnInit {
       telefono: this.formulario.value.telefono,
       documento: this.formulario.value.documento,
       conocimiento: this.formulario.value.conocimiento,
-      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+      imagen: 'https://www.w3schools.com/w3images/avatar6.png'
     };
     console.log(estudiante);
     this.estudianteService.agregarEstudiante(estudiante);

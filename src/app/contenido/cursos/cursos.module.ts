@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CursoService } from './services/curso.service';
 import { SharedModule } from '../../shared/shared.module';
 import { SubtitleFontDirective } from '../../core/directives/subtitle-font.directive';
+import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SubtitleFontDirective } from '../../core/directives/subtitle-font.direc
     AgregarCursoComponent,
     EditarCursoComponent,
     CursosInicioComponent,
-    SubtitleFontDirective
+    SubtitleFontDirective,
+    DetalleCursoComponent
   ],
   imports: [
     CommonModule,

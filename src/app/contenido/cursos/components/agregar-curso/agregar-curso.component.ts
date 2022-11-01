@@ -35,7 +35,7 @@ export class AgregarCursoComponent implements OnInit {
       fechaFin: this.formulario.value.fin,
       profesor: this.formulario.value.profesor,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
-      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+      imagen: 'https://www.uptime.eu/wp-content/uploads/2021/07/logos-768x768.png'
     };
     console.log(curso);
     this.cursoService.agregarCurso(curso);

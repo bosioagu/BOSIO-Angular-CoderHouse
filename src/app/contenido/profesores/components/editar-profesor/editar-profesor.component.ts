@@ -12,7 +12,7 @@ import { ProfesoresService } from '../../services/profesores.service';
 export class EditarProfesorComponent implements OnInit {
 
   formulario!: FormGroup;
-  id!: number;
+  profesor!: Profesor;
   fileName = '';
   imagen: any = ""
 
@@ -28,19 +28,28 @@ export class EditarProfesorComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((parametros) => {
       this.imagen = parametros.get('imagen')
       console.log(parametros)
-      this.id = parseInt(parametros.get('id') || '0');
+
+      this.profesor = {
+        id: parseInt(parametros.get('id') || '0'),
+        nombre: parametros.get('nombre') || '',
+        apellido: parametros.get('apellido') || '',
+        curso: parametros.get('curso') || '', 
+        imagen: parametros.get('imagen') || ''
+
+      }
+      
+
       this.formulario = new FormGroup({
         nombre: new FormControl(parametros.get('nombre'), [Validators.required]),
         apellido: new FormControl(parametros.get('apellido')),
         curso: new FormControl(parametros.get('curso')),
-        inscripcionAbierta: new FormControl(parametros.get('inscripcionAbierta'))
       });
     })
   }
 
   editarProfesor() {
     let p: Profesor = {
-      id: this.id,
+      id: this.profesor.id,
       nombre: this.formulario.value.nombre,
       apellido: this.formulario.value.apellido,
       curso: this.formulario.value.curso,

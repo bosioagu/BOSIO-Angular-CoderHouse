@@ -12,7 +12,7 @@ import { EstudianteService } from '../../services/estudiante.service';
 export class EditarEstudianteComponent implements OnInit {
 
   formulario!: FormGroup;
-  id!: number;
+  estudiante!: Estudiante;
   fileName = '';
   imagen: any = ""
 
@@ -28,21 +28,33 @@ export class EditarEstudianteComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((parametros) => {
       this.imagen = parametros.get('imagen')
       console.log(parametros)
-      this.id = parseInt(parametros.get('id') || '0');
+      
+      this.estudiante = {
+        id: parseInt(parametros.get('id') || '0'),
+        nombre: parametros.get('nombre') || '',
+        apellido: parametros.get('apellido') || '',
+        fechaNacimiento: new Date (parametros.get('fechaNacimiento') || ''),
+        telefono: parametros.get('telefono') || '',
+        documento: parametros.get('documento') || '',
+        conocimiento: parametros.get('conocimiento') || '',
+        imagen: parametros.get('imagen') || ''
+   
+      };
       this.formulario = new FormGroup({
-        nombre: new FormControl(parametros.get('nombre'), [Validators.required]),
-        apellido: new FormControl(parametros.get('apellido')),
-        fechaNacimiento: new FormControl(parametros.get('fechaNacimiento')),
-        telefono: new FormControl(parametros.get('telefono')),
-        documento: new FormControl(parametros.get('documento')),
-        conocimiento: new FormControl(parametros.get('conocimiento'))
+        nombre: new FormControl(this.estudiante.nombre, [Validators.required]),
+        apellido: new FormControl(this.estudiante.apellido, [Validators.required]),
+        fechaNacimiento: new FormControl(this.estudiante.fechaNacimiento, [Validators.required]),
+        telefono: new FormControl(this.estudiante.telefono, [Validators.required]),
+        documento: new FormControl(this.estudiante.documento, [Validators.required]),
+        conocimiento: new FormControl(this.estudiante.conocimiento, [Validators.required]),
+
       });
     })
   }
 
   editarEstudiante() {
     let e: Estudiante = {
-      id: this.id,
+      id: this.estudiante.id,
       nombre: this.formulario.value.nombre,
       apellido: this.formulario.value.apellido,
       fechaNacimiento: this.formulario.value.fechaNacimiento,

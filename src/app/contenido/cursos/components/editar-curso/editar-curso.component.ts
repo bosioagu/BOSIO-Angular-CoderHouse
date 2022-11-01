@@ -11,7 +11,7 @@ import { CursoService } from '../../services/curso.service';
 })
 export class EditarCursoComponent implements OnInit {
   formulario!: FormGroup;
-  id!: number;
+  curso!: Curso;
   fileName = '';
   imagen: any = ""
 
@@ -27,28 +27,41 @@ export class EditarCursoComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((parametros) => {
       this.imagen = parametros.get('imagen')
       console.log(parametros)
-      this.id = parseInt(parametros.get('id') || '0');
+
+      this.curso = {
+        id: parseInt(parametros.get('id') || '0'),
+        nombre: parametros.get('nombre') || '',
+        comision: parametros.get('comision') || '',
+        profesor: parametros.get('profesor') || '',
+        fechaInicio: new Date(parametros.get('fechaInicio')  || ''),
+        fechaFin: new Date(parametros.get('fechaFin')  || ''),
+        inscripcionAbierta:parametros.get('inscripcionAbierta') === 'true',
+        imagen: parametros.get('imagen') || ''
+
+      }
+
+
       this.formulario = new FormGroup({
-        nombre: new FormControl(parametros.get('nombre'), [Validators.required]),
-        comision: new FormControl(parametros.get('comision')),
-        profesor: new FormControl(parametros.get('profesor')),
-        inicio: new FormControl(parametros.get('fechaInicio')),
-        fin: new FormControl(parametros.get('fechaFin')),
-        inscripcionAbierta: new FormControl(parametros.get('inscripcionAbierta'))
+        nombre: new FormControl(this.curso.nombre, [Validators.required]),
+        comision: new FormControl(this.curso.comision),
+        profesor: new FormControl(this.curso.profesor),
+        inicio: new FormControl(this.curso.fechaInicio),
+        fin: new FormControl(this.curso.fechaFin),
+        inscripcionAbierta: new FormControl(this.curso.inscripcionAbierta)
       });
     })
   }
 
   editarCurso() {
     let c: Curso = {
-      id: this.id,
+      id: this.curso.id,
       nombre: this.formulario.value.nombre,
       comision: this.formulario.value.comision,
       profesor: this.formulario.value.profesor,
       fechaInicio: this.formulario.value.inicio,
       fechaFin: this.formulario.value.fin,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
-      imagen: this.imagen
+      imagen: this.curso.imagen
     }
 
     this.cursoService.editarCurso(c);

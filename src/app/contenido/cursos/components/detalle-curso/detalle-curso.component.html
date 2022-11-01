@@ -1,0 +1,24 @@
+<h1>Detalle Curso</h1>
+<div *ngIf="curso$ | async as curso">
+    <h1>
+       CURSO: {{ curso.nombre}}
+    </h1>
+    <h3>
+        PROFESOR: {{ curso.profesor}}
+    </h3>
+    <p>
+        Inicio: {{ curso.fechaInicio}}
+    </p>
+    <p>
+        Fin: {{ curso.fechaFin}}
+    </p>
+    <p>
+        Comision: {{ curso.comision}}
+    </p>
+
+</div>
+<div *ngIf="!(curso$ | async)">
+    <p>
+       No se encontro curso
+    </p>
+</div>

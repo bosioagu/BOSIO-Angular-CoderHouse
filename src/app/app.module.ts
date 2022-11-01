@@ -25,7 +25,6 @@ import { ProfesoresModule } from './contenido/profesores/profesores.module';
     BrowserModule,
     CoreModule,
     AutenticacionModule,
-    CursosModule,
     EstudiantesModule,
     ProfesoresModule,
     AppRoutingModule,

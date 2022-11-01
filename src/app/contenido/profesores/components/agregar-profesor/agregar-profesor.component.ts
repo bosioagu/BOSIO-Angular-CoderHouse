@@ -30,7 +30,7 @@ export class AgregarProfesorComponent implements OnInit {
       nombre: this.formulario.value.nombre,
       apellido: this.formulario.value.apellido,
       curso: this.formulario.value.curso,
-      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+      imagen: 'https://www.w3schools.com/howto/img_avatar.png'
     };
     console.log(profesoresSubect);
     this.profesorService.agregarProfesor(profesoresSubect);

@@ -1,5 +1,6 @@
-<mat-toolbar>
-    <a mat-button routerLink=""><h3 >Academy</h3></a>
+<mat-toolbar color="primary" *ngIf="sesion$ | async as sesion">
+    <a mat-button routerLink="inicio"><h3 >Academy</h3></a>
     <div class="espacio"></div>
-    <a mat-button routerLink="login">Iniciar Sesion</a>
+    <h3>Bienvenido {{sesion.usuarioActivo?.usuario}}</h3>
+    <a mat-button routerLink="autenticacion/login"><mat-icon>perm_identity</mat-icon></a>
 </mat-toolbar>

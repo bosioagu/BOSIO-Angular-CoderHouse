@@ -1,13 +1,17 @@
-
 <div class="content">
-    <mat-toolbar >
-        <p>PROFESORES</p>
-        <div class="espacio"></div>
-        <a mat-button type="button" class="btn btn-primary" routerLink="listar">Listar Profesores</a>
-            <a mat-button type="button" class="btn btn-primary" routerLink="agregar">Agregar Profesores</a>
-        </mat-toolbar>
-    <div class="content-info">
-    <router-outlet  ></router-outlet>
-    <h1>En esta seccion se veran noticias relacionadas</h1>
-    </div>
+  <mat-toolbar>
+    <p>PROFESORES</p>
+    <div class="espacio"></div>
+    <a mat-button type="button" class="btn btn-primary" routerLink="listar"
+      >Listar Profesores</a>
+    <ng-container *ngIf="sesion$ | async as sesion">
+      <div *ngIf="sesion.usuarioActivo?.admin">
+        <a mat-button type="button" class="btn btn-primary" routerLink="agregar"
+          >Agregar Profesores</a>
+      </div>
+    </ng-container>
+  </mat-toolbar>
+  <div class="content-info">
+    <router-outlet></router-outlet>
+  </div>
 </div>

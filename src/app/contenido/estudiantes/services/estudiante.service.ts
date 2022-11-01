@@ -1,92 +1,92 @@
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Estudiante } from 'src/app/models/estudiante';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstudianteService {
-  private estudiantes: Estudiante[] = [
-    {
-      id: 1,
-      nombre: 'Fernando',
-      apellido: 'Garcia',
-      fechaNacimiento: new Date(2022, 0, 1),
-      telefono: '351333333',
-      documento: '33600300',
-      conocimiento: "React",
-      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
-    },
-    {
-      id: 2,
-      nombre: 'Alejandro',
-      apellido: 'Perez',
-      fechaNacimiento: new Date(2022, 0, 1),
-      telefono: '351333333',
-      documento: '33600300',
-      conocimiento: "Java",
-      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
-    },
-    {
-      id: 3,
-      nombre: 'Martín',
-      apellido: 'Gonzalez',
-      fechaNacimiento: new Date(2022, 0, 1),
-      telefono: '351333333',
-      documento: '33600300',
-      conocimiento: "Angular",
-      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
-    },
-    {
-      id: 4,
-      nombre: 'Sebastian',
-      apellido: 'Diaz',
-      fechaNacimiento: new Date(2022, 0, 1),
-      telefono: '351333333',
-      documento: '33600300',
-      conocimiento: "Angular",
-      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
-    }
-  ];
-  private estudiantesSubect: BehaviorSubject<Estudiante[]>;
 
+  
+   
+  constructor(
+    private http: HttpClient
+    ) { 
 
-  constructor() { 
-    this.estudiantesSubect = new BehaviorSubject<Estudiante[]>(this.estudiantes);
   }
 
   obtenerEstudiantes(): Observable<Estudiante[]>{
-    return this.estudiantesSubect.asObservable();
+    return this.http.get<Estudiante[]>(`${environment.api}/estudiantes`, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+      catchError(this.manejarErrorEstudiante)
+    )
   }
 
-  obtenerEstudiante(id: number): Observable<Estudiante[]>{
-    return this.obtenerEstudiantes().pipe(
-      map((estudiantes: Estudiante[]) => estudiantes.filter((estudiante: Estudiante) => estudiante.id === id))
+  obtenerEstudiantee(id: number): Observable<Estudiante>{
+    return this.http.get<Estudiante>(`${environment.api}/estudiantes/${id}`, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+      catchError(this.manejarErrorEstudiante)
     )
   }
 
   agregarEstudiante(estudiante: Estudiante){
-    this.estudiantes.push(estudiante);
-    this.estudiantesSubect.next(this.estudiantes);
+    this.http.post(`${environment.api}/estudiantes/`, estudiante, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+      catchError(this.manejarErrorEstudiante)
+    ).subscribe(console.log);
   }
 
   editarEstudiante(estudiante: Estudiante){
-    let indice = this.estudiantes.findIndex((c: Estudiante) => c.id === estudiante.id);
-
-    if(indice > -1){
-      this.estudiantes[indice] = estudiante;
-    }
-
-    this.estudiantesSubect.next(this.estudiantes);
+    this.http.put<Estudiante>(`${environment.api}/estudiantes/${estudiante.id}`, estudiante).pipe(
+      catchError(this.manejarErrorEstudiante)
+    ).subscribe(console.log);
   }
 
   eliminarEstudiante(id: number){
-    let indice = this.estudiantes.findIndex((c: Estudiante) => c.id === id);
+    this.http.delete<Estudiante>(`${environment.api}/estudiantes/${id}`).pipe(
+      catchError(this.manejarErrorEstudiante)
+    ).subscribe(console.log);
+    alert("Registro eliminado");  
+  }
 
-    if(indice > -1){
-      this.estudiantes.splice(indice, 1);
+  private manejarErrorEstudiante(error: HttpErrorResponse){
+    if(error.error instanceof ErrorEvent){
+      console.warn('Error del lado del cliente', error.error.message);
+    }else{
+      console.warn('Error del lado del servidor', error.error.message);
     }
 
-    this.estudiantesSubect.next(this.estudiantes);
+    return throwError(() => new Error('Error en la comunicacion HTTP'));
   }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
