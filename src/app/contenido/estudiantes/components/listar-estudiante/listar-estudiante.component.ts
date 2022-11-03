@@ -23,6 +23,7 @@ export class ListarEstudianteComponent implements OnInit {
 
   eliminarEstudiante(id: number){
     this.estudianteService.eliminarEstudiante(id);
+    this.estudiantes$ = this.estudianteService.obtenerEstudiantes();
   }
 
   editarEstudiante(estudiante: Estudiante){

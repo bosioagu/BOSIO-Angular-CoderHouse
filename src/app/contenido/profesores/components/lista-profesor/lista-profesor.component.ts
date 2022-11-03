@@ -24,6 +24,7 @@ export class ListaProfesorComponent implements OnInit {
 
   eliminarProfesor(id: number){
     this.profesorService.eliminarProfesor(id);
+    this.profesores$ = this.profesorService.obtenerProfesores();
   }
 
   editarProfesor(profesor: Profesor){
