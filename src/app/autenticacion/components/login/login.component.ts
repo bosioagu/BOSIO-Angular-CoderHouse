@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SesionService } from 'src/app/core/services/sesion.service';
 import { Usuario } from 'src/app/models/usuario';
@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.formulario = new FormGroup({
-      usuario: new FormControl('Agustin'),
-      contrasena: new FormControl('pass234'),
+      usuario: new FormControl('',[Validators.required]),
+      contrasena: new FormControl('',[Validators.required]),
       admin: new FormControl(true),
       canActivateChild: new FormControl(true),
       canLoad: new FormControl(true),
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     }
     console.log(this.formulario.value);
     this.sesionService.login(usuario);
+    alert("Bienvenido")
     this.router.navigate(['inicio']);
   }
 

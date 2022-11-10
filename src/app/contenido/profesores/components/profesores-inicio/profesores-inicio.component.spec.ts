@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfesoresInicioComponent } from './profesores-inicio.component';
-
+/*
 describe('ProfesoresInicioComponent', () => {
   let component: ProfesoresInicioComponent;
   let fixture: ComponentFixture<ProfesoresInicioComponent>;
@@ -21,3 +21,4 @@ describe('ProfesoresInicioComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/
