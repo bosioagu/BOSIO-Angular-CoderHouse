@@ -6,6 +6,9 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SesionService } from './services/sesion.service';
 import { MaterialModule } from '../material.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { StoreModule } from '@ngrx/store';
+import { reducer, sesionFeatureKey } from './state/sesion.reducer';
+
 
 
 
@@ -19,6 +22,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   imports: [
     CommonModule,
     MaterialModule,
+    StoreModule.forFeature(sesionFeatureKey, reducer),
    ],
   providers: [
     SesionService

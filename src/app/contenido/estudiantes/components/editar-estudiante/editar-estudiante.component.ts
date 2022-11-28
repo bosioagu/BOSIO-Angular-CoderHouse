@@ -27,7 +27,6 @@ export class EditarEstudianteComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) => {
       this.imagen = parametros.get('imagen')
-      console.log(parametros)
       
       this.estudiante = {
         id: parseInt(parametros.get('id') || '0'),

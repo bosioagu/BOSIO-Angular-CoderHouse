@@ -32,7 +32,6 @@ export class AgregarProfesorComponent implements OnInit {
       curso: this.formulario.value.curso,
       imagen: 'https://www.w3schools.com/howto/img_avatar.png'
     };
-    console.log(profesoresSubect);
     this.profesorService.agregarProfesor(profesoresSubect);
     this.router.navigate(['profesores/listar']); // localhost/cursos/listar
   }

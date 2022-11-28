@@ -1,3 +1,7 @@
 <div class="content">
-    <p appSubtitleFont>Academy news</p>
+    <div *ngIf="route.url === '/inicio'" class="video-content">
+        <video class="video" autoplay>
+          <source src="../../../../../assets/videos/bienvenidos.mp4" type="video/mp4">
+        </video>
+      </div>
 </div>

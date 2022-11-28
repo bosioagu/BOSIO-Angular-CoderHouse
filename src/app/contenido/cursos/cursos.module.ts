@@ -12,6 +12,8 @@ import { CursoService } from './services/curso.service';
 import { SharedModule } from '../../shared/shared.module';
 import { SubtitleFontDirective } from '../../core/directives/subtitle-font.directive';
 import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.component';
+import { StoreModule } from '@ngrx/store';
+import { cursosFeatureKey, reducer } from './state/cursos.reducer';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.
     MaterialModule,
     CursosRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature(cursosFeatureKey, reducer)
+    //EffectsModule.forFeature([CursosEffects])
   ],
   providers: [
     CursoService

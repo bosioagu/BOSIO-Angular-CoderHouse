@@ -47,19 +47,19 @@ export class EstudianteService {
       })
     }).pipe(
       catchError(this.manejarErrorEstudiante)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   editarEstudiante(estudiante: Estudiante){
     this.http.put<Estudiante>(`${environment.api}/estudiantes/${estudiante.id}`, estudiante).pipe(
       catchError(this.manejarErrorEstudiante)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   eliminarEstudiante(id: number){
     this.http.delete<Estudiante>(`${environment.api}/estudiantes/${id}`).pipe(
       catchError(this.manejarErrorEstudiante)
-    ).subscribe(console.log);
+    ).subscribe();
     alert("Registro eliminado");  
   }
 

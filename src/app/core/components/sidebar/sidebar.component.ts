@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
-import { SesionService } from '../../services/sesion.service';
+import { selectSesionActiva } from '../../state/sesion.selectors';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,9 +12,10 @@ import { SesionService } from '../../services/sesion.service';
 export class SidebarComponent implements OnInit {
   sesion$!: Observable<Sesion>
 
-  constructor( private sesionService: SesionService
+  constructor( 
+    private store: Store<Sesion>
     ) { 
-      this.sesion$ = this.sesionService.obtenerSesion()
+      this.sesion$ = this.store.select(selectSesionActiva)
     }
 
   ngOnInit(): void {

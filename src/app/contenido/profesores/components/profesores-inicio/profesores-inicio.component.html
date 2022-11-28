@@ -3,7 +3,7 @@
     <p>PROFESORES</p>
     <div class="espacio"></div>
     <a mat-button type="button" class="btn btn-primary" routerLink="listar"
-      >Listar Profesores</a>
+      >Lista Profesores</a>
     <ng-container *ngIf="sesion$ | async as sesion">
       <div *ngIf="sesion.usuarioActivo?.admin">
         <a mat-button type="button" class="btn btn-primary" routerLink="agregar"
@@ -13,5 +13,10 @@
   </mat-toolbar>
   <div class="content-info">
     <router-outlet></router-outlet>
+    <div *ngIf="route.url === '/profesores'" class="video-content">
+      <video class="video" autoplay>
+        <source src="../../../../../assets/videos/profesores.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 </div>

@@ -15,17 +15,43 @@
                 <input matInput formControlName="contrasena">
             </mat-form-field>
         </div>
-        <div class="col-md-2">
-            <mat-slide-toggle formControlName="admin">Es admin</mat-slide-toggle>
-        </div>
-        <div class="col-md-2">
-            <mat-slide-toggle formControlName="canActivateChild">CanActivateChild</mat-slide-toggle>
-        </div>
-        <div class="col-md-2">
-            <mat-slide-toggle formControlName="canLoad">CanLoad</mat-slide-toggle>
-        </div>
-        <div class="col-md-2">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <button id="btnLogin" type="submit" mat-raised-button color="primary" [disabled]="formulario.invalid">Iniciar Sesion</button>
         </div>
     </div>
+  
 </form>
+<p>
+    
+
+"contrasena": "123456",
+"admin": true,
+"canLoad": true,
+"canActivateChild": true,
+"usuario": "agubosio",
+"id": "1"
+<br>
+"contrasena": "123456",
+"admin": false,
+"canLoad": false,
+"canActivateChild": false,
+"usuario": "francoperez",
+"id": "2"
+<br>
+"contrasena": "123456",
+"admin": true,
+"canLoad": false,
+"canActivateChild": true,
+"usuario": "juangarcia",
+"id": "3"
+<br>
+"contrasena": "123456",
+"admin": true,
+"canLoad": true,
+"canActivateChild": false,
+"usuario": "isablediaz",
+"id": "4"
+
+</p>

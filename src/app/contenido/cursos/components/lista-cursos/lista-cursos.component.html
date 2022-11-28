@@ -1,6 +1,10 @@
 <p appSubtitleFont >Cursos</p>
 
-<div class="row">
+<div class="row" *ngIf="(cargando$ | async)">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="row" *ngIf="!(cargando$ | async)">
 
 
 <div *ngFor="let curso of cursos$ | async" class="col-md-3">

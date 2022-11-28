@@ -5,7 +5,7 @@
         <mat-toolbar class="content-toolbar">
             <p>ESTUDIANTES</p>
             <div class="espacio"></div>
-            <a mat-button type="button" class="btn btn-primary" routerLink="listar">Listar Estudiantes</a>
+            <a mat-button type="button" class="btn btn-primary" routerLink="listar">Lista Estudiantes</a>
           <ng-container *ngIf="sesion$ | async as sesion">  
             <div *ngIf="sesion.usuarioActivo?.admin">
                 <a mat-button type="button" class="btn btn-primary" routerLink="agregar">Agregar Estudiante</a>
@@ -13,6 +13,11 @@
           </ng-container>       
         </mat-toolbar>
         <div class="content-info">
+          <div *ngIf="route.url === '/estudiantes'" class="video-content">
+            <video class="video" autoplay>
+              <source src="../../../../../assets/videos/estudiantes.mp4" type="video/mp4">
+            </video>
+          </div>
           <router-outlet  ></router-outlet>
         </div>
       </div>

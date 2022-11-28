@@ -4,7 +4,17 @@
 
 .content {
     
-    width: 1500px;
+    width: 80vw;
     margin-left: 165px;
     margin-top: 20px;
+}
+
+.video{
+    padding-top: 20px;
+    width: 65vw;
+}
+
+.video-content{
+    display: flex;
+    justify-content: space-around;
 }

@@ -37,7 +37,7 @@ export class AgregarCursoComponent implements OnInit {
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
       imagen: 'https://www.uptime.eu/wp-content/uploads/2021/07/logos-768x768.png'
     };
-    console.log(curso);
+  
     this.cursoService.agregarCurso(curso);
     this.router.navigate(['cursos/listar']); // localhost/cursos/listar
   }

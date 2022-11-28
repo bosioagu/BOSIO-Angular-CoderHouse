@@ -28,7 +28,7 @@ export class AgregarEstudianteComponent implements OnInit {
     })
   }
 
-  agregarCurso(){
+  agregarEstudiante(){
     const estudiante: Estudiante = {
       id: Math.round(Math.random()*1000),
       nombre: this.formulario.value.nombre,
@@ -39,7 +39,6 @@ export class AgregarEstudianteComponent implements OnInit {
       conocimiento: this.formulario.value.conocimiento,
       imagen: 'https://www.w3schools.com/w3images/avatar6.png'
     };
-    console.log(estudiante);
     this.estudianteService.agregarEstudiante(estudiante);
     this.router.navigate(['estudiantes/listar']); // localhost/cursos/listar
   }

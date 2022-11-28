@@ -7,6 +7,7 @@
 
 .grid-toolbar{
     grid-area: toolbar;
+    width: 99vw;
 }
 
 .grid-left-menu{

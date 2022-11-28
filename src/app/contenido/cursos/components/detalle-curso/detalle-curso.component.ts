@@ -24,7 +24,6 @@ export class DetalleCursoComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((parametros) =>{
     let id = parseInt(parametros.get('id') || '0') 
     this.curso$ = this.cursoService.obtenerCurso(id)
-    console.log(parametros)
     }
     )
   }

@@ -45,19 +45,19 @@ export class ProfesoresService {
       })
     }).pipe(
       catchError(this.manejarErrorProfesor)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   editarProfesor(profesor: Profesor){
     this.http.put<Profesor>(`${environment.api}/profesores/${profesor.id}`, profesor).pipe(
       catchError(this.manejarErrorProfesor)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   eliminarProfesor(id: number){
     this.http.delete<Profesor>(`${environment.api}/profesores/${id}`).pipe(
       catchError(this.manejarErrorProfesor)
-    ).subscribe(console.log);
+    ).subscribe();
     alert("Registro eliminado");  
   }
 
@@ -77,43 +77,3 @@ export class ProfesoresService {
 
 
 
-
-/*
-
-
-  obtenerProfesores(): Observable<Profesor[]>{
-    return this.profesoresSubect.asObservable();
-  }
-
-  obtenerEstudiante(id: number): Observable<Profesor[]>{
-    return this.obtenerProfesores().pipe(
-      map((profesores: Profesor[]) => profesores.filter((profesor: Profesor) => profesor.id === id))
-    )
-  }
-
-  agregarProfesor(profesor: Profesor){
-    this.profesores.push(profesor);
-    this.profesoresSubect.next(this.profesores);
-  }
-
-  editarProfesor(profesor: Profesor){
-    let indice = this.profesores.findIndex((p: Profesor) => p.id === profesor.id);
-
-    if(indice > -1){
-      this.profesores[indice] = profesor;
-    }
-
-    this.profesoresSubect.next(this.profesores);
-  }
-
-  eliminarProfesor(id: number){
-    let indice = this.profesores.findIndex((p: Profesor) => p.id === id);
-
-    if(indice > -1){
-      this.profesores.splice(indice, 1);
-    }
-
-    this.profesoresSubect.next(this.profesores);
-  }
-}
-*/

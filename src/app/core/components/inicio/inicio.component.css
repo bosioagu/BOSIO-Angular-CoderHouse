@@ -1,5 +1,15 @@
 .content{
-    width: 1500px;
+    width: 80vw;
     margin-left: 165px;
     margin-top: 20px;
+}
+
+.video{
+    padding: 25px;
+    width: 75vw;
+}
+
+.video-content{
+    display: flex;
+    justify-content: space-around;
 }
